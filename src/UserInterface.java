@@ -19,7 +19,7 @@ public class UserInterface{
             switch (sc.nextInt()) {
                 case 1 -> createNewNode();
                 case 2 -> createNewEdge();
-                case 3 -> System.out.println("TODO");
+                case 3 -> dijkstraUtils.doDijkstra();
                 case 4 -> isRunning = false;
             }
         }
