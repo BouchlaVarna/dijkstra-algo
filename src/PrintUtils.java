@@ -8,8 +8,9 @@ public class PrintUtils {
 
     public void printCurrentNodes(LinkedList<Node> nodes) {
         System.out.println("Current nodes: ");
-        for (Node node : nodes) {
-            System.out.println(node);
+        for (int i = 0; i < nodes.size(); i++) {
+            Node node = nodes.get(i);
+            System.out.println(i + ". " + node);
         }
         System.out.println();
     }
