@@ -25,12 +25,49 @@ public class DijkstraUtils {
         this.edgeList = edgeList;
     }
 
-    public void addNewNode() {
-
+    public void addNewNode(Node node) {
+        nodeList.add(node);
     }
 
-    public void addNewEdge() {
+    public void addNewEdge(Edge edge) {
+        edgeList.add(edge);
+    }
 
+    public void doDijkstra(Node startNode) {
+        LinkedList<Node> currentNodes = new LinkedList<>();
+        currentNodes.push(startNode);
+        startNode.setValue(0);
+        while (!currentNodes.isEmpty()) {
+            Node currentNode = currentNodes.pop();
+            List<Node> neighbours = findAllNeighbours(currentNode);
+            currentNodes.addAll(neighbours);
+            for (Node node : neighbours) {
+                Edge edge = findEdge(node, currentNode);
+                int totalSize = currentNode.getValue() + edge.getValue();
+                if (node.getValue() > totalSize) {
+                    node.setValue(totalSize);
+                }
+            }
+            currentNode.setUsed(true);
+        }
+    }
+
+    protected Edge findEdge(Node node, Node currentNode) {
+        for (Edge edge : edgeList) {
+            if (edge.getStartNode() == node && edge.getEndNode() == currentNode) return edge;
+        }
+
+        return null;
+    }
+
+    protected List<Node> findAllNeighbours(Node startNode) {
+        List<Node> nodes = new LinkedList<>();
+
+        for (Edge edge : edgeList) {
+            if (edge.getStartNode() == startNode) nodes.add(edge.getStartNode());
+        }
+
+        return nodeList;
     }
 
     @Override

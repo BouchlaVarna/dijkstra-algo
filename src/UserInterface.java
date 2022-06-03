@@ -1,3 +1,4 @@
+import Objects.Edge;
 import Objects.Node;
 
 import java.util.Scanner;
@@ -10,6 +11,7 @@ public class UserInterface{
     boolean isRunning = true;
 
     public void run() {
+
         while (isRunning) {
             printUtils.printCurrentNodes(dijkstraUtils.getNodeList());
             printUtils.printCurrentEdges(dijkstraUtils.getEdgeList());
@@ -24,10 +26,16 @@ public class UserInterface{
     }
 
     public void createNewNode() {
-
+        printUtils.printNodeCreation();
+        Node node = new Node(sc.nextInt());
+        dijkstraUtils.addNewNode(node);
     }
 
     public void createNewEdge() {
+        printUtils.printEdgeCreation();
+        Edge edge = new Edge(sc.nextInt());
+        printUtils.printCurrentNodes(dijkstraUtils.getNodeList());
 
+        dijkstraUtils.addNewEdge(edge);
     }
 }

@@ -6,13 +6,8 @@ import java.util.List;
 public class Node {
 
     private int value;
-    private LinkedList<Edge> edges;
     private boolean used;
-
-    public Node(int value, LinkedList<Edge> edges) {
-        this.value = value;
-        this.edges = edges;
-    }
+    private List<Edge> edgeList = new LinkedList<>();
 
     public Node(int value) {
         this.value = value;
@@ -26,14 +21,6 @@ public class Node {
         this.value = value;
     }
 
-    public List<Edge> getEdges() {
-        return edges;
-    }
-
-    public void setEdges(LinkedList<Edge> edges) {
-        this.edges = edges;
-    }
-
     public boolean isUsed() {
         return used;
     }
@@ -42,11 +29,18 @@ public class Node {
         this.used = used;
     }
 
+    public void addEdge(Edge edge) {
+        edgeList.add(edge);
+    }
+
+    public List<Edge> getEdges() {
+        return edgeList;
+    }
+
     @Override
     public String toString() {
         return "Node{" +
                 "value=" + value +
-                ", edges=" + edges +
                 '}';
     }
 }

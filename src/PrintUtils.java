@@ -9,14 +9,26 @@ public class PrintUtils {
     public void printCurrentNodes(LinkedList<Node> nodes) {
         System.out.println("Current nodes: ");
         for (Node node : nodes) {
-            System.out.println(node.toString());
+            System.out.println(node);
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public void printCurrentEdges(LinkedList<Edge> edges) {
         System.out.println("Current edges: ");
-        System.out.println("");
+        for (Edge edge : edges) {
+            System.out.println(edge);
+        }
+        System.out.println();
+    }
+
+    public void printNodeCreation() {
+        System.out.println("Enter value of the node");
+    }
+
+    public void printEdgeCreation() {
+        System.out.println("Enter value of the edge");
+        System.out.println("Afterwards enter a node as a starting point and a node as an ending point");
     }
 
     public void printOptions() {
