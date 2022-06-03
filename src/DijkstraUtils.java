@@ -43,18 +43,23 @@ public class DijkstraUtils {
             currentNodes.addAll(neighbours);
             for (Node node : neighbours) {
                 Edge edge = findEdge(node, currentNode);
-                int totalSize = currentNode.getValue() + edge.getValue();
+                int totalSize = 0;
+                if (edge != null) totalSize = currentNode.getValue() + edge.getValue();
                 if (node.getValue() > totalSize) {
                     node.setValue(totalSize);
                 }
             }
             currentNode.setUsed(true);
+            PrintUtils printUtils = new PrintUtils();
+            printUtils.printCurrentNodes(getNodeList());
+            printUtils.printCurrentEdges(getEdgeList());
+            return;
         }
     }
 
     protected Edge findEdge(Node node, Node currentNode) {
         for (Edge edge : edgeList) {
-            if (edge.getStartNode() == node && edge.getEndNode() == currentNode) return edge;
+            if (edge.getStartNode() == currentNode && edge.getEndNode() == node) return edge;
         }
 
         return null;
